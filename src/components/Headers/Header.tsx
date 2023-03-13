@@ -1,19 +1,13 @@
+import React from 'react';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { NavHashLink } from 'react-router-hash-link';
 import styled from 'styled-components';
 import logo from '../../assets/images/logo3.png';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-// import { useEventrixState } from 'eventrix';
-// import { BasketEntity } from 'types';
-import { PREFIX } from '../../config';
-
-
-
 
 
 export const Header = () => {
     const [navbar, setNavbar] = useState(false);
-    // const [basket] = useEventrixState<BasketEntity[]>('basket');
 
     const changeBackground = () => {
         if (window.scrollY > 0) {
@@ -28,38 +22,28 @@ export const Header = () => {
     return (
         <Container isActive={navbar}>
             <div className="wrapper">
-                <NavHashLink smooth to={PREFIX ? `${PREFIX}#` : `/#`}>
+                <NavHashLink smooth to="/#">
                     <img className="logo" src={logo} alt="logo" />
                 </NavHashLink>
                 <ul>
                     <NavHashLink
-                        smooth
-                        to={PREFIX ? `${PREFIX}#about-us` : `/#about-us`}
-                        className="li">
+                        smooth to="#about-us" className="li">
                         O nas
                     </NavHashLink>
                     <NavHashLink
-                        smooth
-                        to={PREFIX ? `${PREFIX}#menu` : `/#menu`}
-                        className="li">
+                        smooth to="/#menu" className="li">
                         Menu
                     </NavHashLink>
                     <NavHashLink
-                        smooth
-                        to={PREFIX ? `${PREFIX}#lunch` : `/#lunch`}
-                        className="li">
+                        smooth to="/#lunch" className="li">
                         Lunch
                     </NavHashLink>
                     <NavHashLink
-                        smooth
-                        to={PREFIX ? `${PREFIX}#find-us` : `/#find-us`}
-                        className="li">
+                        smooth to="/#find-us" className="li">
                         Znajdziesz nas
                     </NavHashLink>
                     <NavHashLink
-                        smooth
-                        to={PREFIX ? `${PREFIX}#contact` : `/#contact`}
-                        className="li">
+                        smooth to="/#contact" className="li">
                         Kontakt
                     </NavHashLink>
                 </ul>
