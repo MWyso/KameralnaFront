@@ -1,8 +1,8 @@
 import React, { useEffect, useState} from 'react';
 import {MapContainer, Marker, Popup, TileLayer} from 'react-leaflet';
-import '../../utils/fix-map-icon'
 import {SimpleMapEntity} from 'types';
 import {apiUrl} from "../../config/api";
+import '../../utils/fix-map-icon'
 import 'leaflet/dist/leaflet.css';
 import {SingleAd} from "../Map/SingleAd";
 import styled from "styled-components";

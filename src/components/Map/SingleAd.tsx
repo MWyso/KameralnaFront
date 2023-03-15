@@ -3,6 +3,7 @@ import {MapEntity} from "types";
 import {apiUrl} from "../../config/api";
 
 interface Props {
+
     id: string;
 }
 
