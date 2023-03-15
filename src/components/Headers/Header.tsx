@@ -105,7 +105,7 @@ const Container = styled.section<{ isActive: boolean }>`
         font-size: ${(props) => props.theme.fontSize.lg};
         z-index: 1;
 
-        .top {
+        .top { 
           z-index: 1;
           cursor: pointer;
     }
