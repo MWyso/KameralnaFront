@@ -46,6 +46,7 @@ export const Map = () => {
 const MapWrapper = styled.div`
   height: calc(100vh - 3.1rem);
   width: 50%;
+  
 
   .leaflet-container {
     height: 50%

@@ -12,6 +12,7 @@ export const Main = () => {
             <Header />
             <Home />
             <Map />
+            <Menu />
             <Contact />
         </Wrapper>
     );

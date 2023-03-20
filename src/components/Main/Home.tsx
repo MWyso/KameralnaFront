@@ -27,10 +27,10 @@ export const Home = () => {
                     </div>
                 </div>
                 <div className="info-sm">
-                    <Link to="" className="top" title="Facebook">
+                    <Link to="https://www.facebook.com/kameralnajastrzebie" className="top" title="Facebook">
                         <i className="bx bxl-facebook-square" />
                     </Link>
-                    <Link to="" className="top" title="Instagram">
+                    <Link to="https://www.instagram.com/kameralnajastrzebie/" className="top" title="Instagram">
                         <i className="bx bxl-instagram-alt" />
                     </Link>
                 </div>
