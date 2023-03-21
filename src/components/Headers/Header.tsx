@@ -1,7 +1,7 @@
 import React from 'react';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { NavHashLink } from 'react-router-hash-link';
+import {useState} from 'react';
+import {Link} from 'react-router-dom';
+import {NavHashLink} from 'react-router-hash-link';
 import styled from 'styled-components';
 import logo from '../../assets/images/logo3.png';
 
@@ -23,7 +23,9 @@ export const Header = () => {
         <Container isActive={navbar}>
             <div className="wrapper">
                 <NavHashLink smooth to="/#">
-                    <img className="logo" src={logo} alt="logo" />
+                    <img className="logo" src={logo} alt="logo"/>
+                    <hr/>
+                    <Link to={'/login'}>Admin panel</Link>
                 </NavHashLink>
                 <ul>
                     <NavHashLink
@@ -47,12 +49,11 @@ export const Header = () => {
                         Kontakt
                     </NavHashLink>
                 </ul>
-                <div className="info-sm">
-                    <Link to="https://www.facebook.com/kameralnajastrzebie" className="top" title="Facebook">
-                        <i className="bx bxl-facebook-square" />
-                    </Link>
-                    <Link to="https://www.instagram.com/kameralnajastrzebie/" className="top" title="Instagram">
-                        <i className="bx bxl-instagram-alt" />
+
+                <div>
+                    <Link to={'/basket'}>
+                        <i className="bx bxs-basket">
+                        </i>
                     </Link>
                 </div>
             </div>
@@ -69,18 +70,20 @@ const Container = styled.section<{ isActive: boolean }>`
           props.isActive ? props.theme.colors.eden : ''};
   display: flex;
   justify-content: center;
+  text-decoration: none;
 
   .wrapper {
     width: 80%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+   
 
     .logo {
       height: 6rem;
       cursor: pointer;
     }
-  
+
     ul {
       display: flex;
       text-decoration: none;
@@ -105,8 +108,8 @@ const Container = styled.section<{ isActive: boolean }>`
         font-size: ${(props) => props.theme.fontSize.lg};
         z-index: 1;
 
-        .top { 
+        .top {
           z-index: 1;
           cursor: pointer;
-    }
+        }
 `;
