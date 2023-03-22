@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import {AdminHeader} from "../components/Headers/AdminHeader";
 import styled from "styled-components";
+import {AdminAdd} from "../components/AdminPanel/AdminAdd/AdminAdd";
+import {ItemAdd} from "../components/AdminPanel/MenuEdit/ItemAdd";
 
 export const AdminPanel = () => {
     const [userData, setUserData] = useState({
@@ -11,6 +13,8 @@ export const AdminPanel = () => {
     return (
         <Wrapper>
             <AdminHeader id={userData.id}/>
+            <AdminAdd/>
+            <ItemAdd/>
         </Wrapper>
     );
 };

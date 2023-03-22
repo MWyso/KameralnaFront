@@ -1,6 +1,7 @@
 import React, {FormEvent, useState} from "react";
 import { NavLink, useNavigate } from 'react-router-dom';
 import styled from "styled-components";
+import {apiUrl} from "../config/api";
 
 export const LoginView = () => {
     const [email, setEmail] = useState('');
@@ -13,7 +14,7 @@ export const LoginView = () => {
         setLoading(true);
 
         try {
-            const res = await fetch(`http://localhost:3001/login/${email}/${password}`, {
+            const res = await fetch(`${apiUrl}/login/${email}/${password}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
