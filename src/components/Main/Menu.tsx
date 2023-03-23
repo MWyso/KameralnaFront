@@ -1,9 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { MenuEntity } from 'types';
 import {apiUrl} from "../../config/api";
-import styled from 'styled-components';
-import logo2 from "../../assets/images/menu/logo2.png";
-import {MenuItem} from "../MenuItem/MenuItem";
 import {MenuTable} from "../MenuItem/MenuTable";
 
 

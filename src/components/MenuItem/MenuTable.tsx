@@ -1,6 +1,5 @@
 import React from 'react';
 import { MenuEntity } from 'types';
-import {ContactUs} from "../ContactItem/ContactUs";
 import {MenuItem} from "./MenuItem";
 
 interface Props {
@@ -11,7 +10,6 @@ export const MenuTable = (props: Props) => (
     <table>
         <thead>
         <tr>
-            <th></th>
             <th>Danie</th>
             <th>Opis</th>
             <th>Cena</th>
@@ -26,14 +24,3 @@ export const MenuTable = (props: Props) => (
         </tbody>
     </table>
 );
-//     <>
-//         <p>
-//             {
-//                 props.menuTable.map(menu => (
-//                     <MenuItem menu={menu} key={menu.id}/>
-//                 ))
-//             }
-//         </p>
-//     </>
-//
-// )

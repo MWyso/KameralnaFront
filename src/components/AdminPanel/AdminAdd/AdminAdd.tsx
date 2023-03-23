@@ -1,7 +1,7 @@
 import React, {FormEvent, useState} from "react";
 import { useNavigate } from 'react-router-dom';
-import {apiUrl} from "../../../config/api";
 import styled from "styled-components";
+import {apiUrl} from "../../../config/api";
 
 export const AdminAdd = () => {
     const [form, setForm] = useState({
@@ -51,7 +51,7 @@ export const AdminAdd = () => {
 
 
     return (
-        <Container>
+        <Container id="add-admin">
             <div className="wrapper">
             <h1>Dodaj nowego administratora</h1>
             <br/>
@@ -99,7 +99,7 @@ const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: ${(props) => props.theme.colors.eden};
+    background-color: ${(props) => props.theme.colors.cream};
 
     .wrapper {
         display: flex;

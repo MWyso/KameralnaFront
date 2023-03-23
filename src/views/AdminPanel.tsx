@@ -3,6 +3,7 @@ import {AdminHeader} from "../components/Headers/AdminHeader";
 import styled from "styled-components";
 import {AdminAdd} from "../components/AdminPanel/AdminAdd/AdminAdd";
 import {ItemAdd} from "../components/AdminPanel/MenuEdit/ItemAdd";
+import {Menu} from "../components/Main/Menu";
 
 export const AdminPanel = () => {
     const [userData, setUserData] = useState({

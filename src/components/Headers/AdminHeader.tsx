@@ -4,6 +4,7 @@ import styled from "styled-components";
 import logo from '../../assets/images/logo3.png';
 import {Outlet} from "@styled-icons/bootstrap";
 import {NavHashLink} from "react-router-hash-link";
+import {apiUrl} from "../../config/api";
 
 type Id = {
     id: string;
@@ -27,7 +28,7 @@ export const AdminHeader = (id: Id) => {
     const logOut = async () => {
         setLoading(true);
         try {
-            await fetch(`http://localhost:3001/login/${id}`);
+            await fetch(`${apiUrl}/login/${id}`);
         } catch (error) {
             console.log(error)
         } finally {
