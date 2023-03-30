@@ -5,7 +5,6 @@ import {NavHashLink} from 'react-router-hash-link';
 import styled from 'styled-components';
 import logo from '../../assets/images/logo3.png';
 
-
 export const Header = () => {
     const [navbar, setNavbar] = useState(false);
 
@@ -24,42 +23,38 @@ export const Header = () => {
             <div className="wrapper">
                 <NavHashLink smooth to="/#">
                     <img className="logo" src={logo} alt="logo"/>
-                    <hr/>
-                    <Link to={'/login'}>Admin panel</Link>
+                    <br/>
+                    <Link to={'/login'} style={{ color: 'black' }} className="li">Admin panel</Link>
                 </NavHashLink>
                 <ul>
-                    <NavHashLink
-                        smooth to="#about-us" className="li">
+                    <NavHashLink smooth to="#about-us" className="li">
                         O nas
                     </NavHashLink>
-                    <NavHashLink
-                        smooth to="/#menu" className="li">
+                    <NavHashLink smooth to="/#menu" className="li">
                         Menu
                     </NavHashLink>
-                    <NavHashLink
-                        smooth to="/#lunch" className="li">
+                    <NavHashLink smooth to="/#lunch" className="li">
                         Lunch
                     </NavHashLink>
-                    <NavHashLink
-                        smooth to="/#find-us" className="li">
+                    <NavHashLink smooth to="/#find-us" className="li">
                         Znajdziesz nas
                     </NavHashLink>
-                    <NavHashLink
-                        smooth to="/#contact" className="li">
+                    <NavHashLink smooth to="/#contact" className="li">
                         Kontakt
                     </NavHashLink>
                 </ul>
 
                 <div>
-                    <Link to={'/basket'}>
-                        <i className="bx bxs-basket">
-                        </i>
+                    <Link to={'/basket'} style={{ fontSize: '2em', color: '#F8B400'}}>
+                        <i className="bx bxs-cart-alt"></i>
                     </Link>
                 </div>
             </div>
         </Container>
     );
 };
+
+
 
 const Container = styled.section<{ isActive: boolean }>`
   position: fixed;
@@ -71,13 +66,14 @@ const Container = styled.section<{ isActive: boolean }>`
   display: flex;
   justify-content: center;
   text-decoration: none;
+  font-family: 'Amatic SC', cursive;
+  
 
   .wrapper {
     width: 80%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-   
 
     .logo {
       height: 6rem;
@@ -89,27 +85,33 @@ const Container = styled.section<{ isActive: boolean }>`
       text-decoration: none;
 
       .li {
+        color: ${(props) => props.theme.colors.yellow};
         cursor: pointer;
         font-weight: 500;
         position: relative;
         text-decoration: none;
+        font-size: 1.5rem;
+
+        &:hover {
+          //text-decoration: underline;
+          color: ${(props) => props.theme.colors.gray};
+        }
+      }
+
+      .li:not(:last-child)::after {
+        content: " | ";
+        margin-left: 5px;
+        margin-right: 2px;
       }
 
       .li:not(:last-child) {
         margin-right: 1rem;
       }
 
-      .info-sm {
-        width: 100%;
-        height: 4rem;
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        font-size: ${(props) => props.theme.fontSize.lg};
+      .top {
         z-index: 1;
-
-        .top {
-          z-index: 1;
-          cursor: pointer;
-        }
+        cursor: pointer;
+      }
+    }
+  }
 `;

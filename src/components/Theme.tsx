@@ -2,13 +2,14 @@ import {ThemeProvider} from "styled-components";
 import { ReactNode } from 'react';
 
 
-const theme = {
+export const theme = {
     colors: {
         eden: '#125B50',
         yellow: '#F8B400',
         cream: '#FAF5E4',
-        brown: '#3A2308',
+        gray: '#868383',
         red: '#FF6363',
+        blue: '#164ecb',
     },
     fontSize: {
         sm: '1.2rem',
