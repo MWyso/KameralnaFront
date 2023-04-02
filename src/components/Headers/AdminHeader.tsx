@@ -58,14 +58,11 @@ export const AdminHeader = (id: Id) => {
                     smooth to="#edit-menu" className="li">
                     Edytuj Menu
                 </NavHashLink>
-                <NavHashLink
-                    smooth to="#edit-info" className="li">
-                    Edytuj Info
-                </NavHashLink>
             </ul>
             <div className="path">
-                <Link to="/login" onClick={logOut}>Wyloguj</Link>
+                <Link to="/login" onClick={logOut} style={{ color: 'black' }} className="li">Wyloguj</Link>
             </div>
+
             </div>
         </Container>
     );
@@ -77,17 +74,18 @@ const Container = styled.section<{ isActive: boolean }>`
   padding: 1rem 0;
   width: 100%;
   background-color: ${(props) =>
-          props.isActive ? props.theme.colors.eden : ''};
+          props.isActive ? props.theme.colors.cream : ''};
   display: flex;
   justify-content: center;
   text-decoration: none;
+  font-family: 'Amatic SC', cursive;
+
 
   .wrapper {
     width: 80%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-
 
     .logo {
       height: 6rem;
@@ -99,27 +97,33 @@ const Container = styled.section<{ isActive: boolean }>`
       text-decoration: none;
 
       .li {
+        color: ${(props) => props.theme.colors.yellow};
         cursor: pointer;
         font-weight: 500;
         position: relative;
         text-decoration: none;
+        font-size: 1.5rem;
+
+        &:hover {
+          //text-decoration: underline;
+          color: ${(props) => props.theme.colors.gray};
+        }
+      }
+
+      .li:not(:last-child)::after {
+        content: " | ";
+        margin-left: 5px;
+        margin-right: 2px;
       }
 
       .li:not(:last-child) {
         margin-right: 1rem;
       }
 
-      .info-sm {
-        width: 100%;
-        height: 4rem;
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        font-size: ${(props) => props.theme.fontSize.lg};
+      .top {
         z-index: 1;
-
-        .top {
-          z-index: 1;
-          cursor: pointer;
-        }
+        cursor: pointer;
+      }
+    }
+  }
 `;

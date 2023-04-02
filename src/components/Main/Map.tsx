@@ -63,7 +63,7 @@ const MapWrapper = styled.div`
   
   
   .leaflet-container {
-    height: 60%
+    height: 73%
   }
   
   h2 {

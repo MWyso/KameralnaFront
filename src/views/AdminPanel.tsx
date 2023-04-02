@@ -2,26 +2,26 @@ import React, {useState} from 'react';
 import {AdminHeader} from "../components/Headers/AdminHeader";
 import styled from "styled-components";
 import {AdminAdd} from "../components/AdminPanel/AdminAdd/AdminAdd";
-import {ItemAdd} from "../components/AdminPanel/MenuEdit/ItemAdd";
-import {Menu} from "../components/Main/Menu";
+import {ItemAdd} from "../components/AdminPanel/ItemEdit/ItemAdd";
 
 export const AdminPanel = () => {
     const [userData, setUserData] = useState({
         id: '',
-        name: '',
     });
 
     return (
         <Wrapper>
             <AdminHeader id={userData.id}/>
             <AdminAdd/>
-            <ItemAdd/>
+           <ItemAdd/>
+
         </Wrapper>
     );
 };
+
 const Wrapper = styled.div`
-    width: 100%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 `;

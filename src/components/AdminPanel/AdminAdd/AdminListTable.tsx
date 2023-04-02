@@ -17,6 +17,7 @@ export const AdminListTable = (props: Props) => (
             <tr>
                 <StyledTh>Nazwa</StyledTh>
                 <StyledTh>E-mail</StyledTh>
+                <StyledTh>Usuń</StyledTh>
             </tr>
             </thead>
             <tbody>

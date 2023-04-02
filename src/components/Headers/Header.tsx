@@ -33,9 +33,6 @@ export const Header = () => {
                     <NavHashLink smooth to="/#menu" className="li">
                         Menu
                     </NavHashLink>
-                    <NavHashLink smooth to="/#lunch" className="li">
-                        Lunch
-                    </NavHashLink>
                     <NavHashLink smooth to="/#find-us" className="li">
                         Znajdziesz nas
                     </NavHashLink>
