@@ -18,6 +18,7 @@
 * [Technologies](#technologies)
 * [Features](#features)
 * [Setup](#setup)
+* [Screen](#screen)
 
 ## General info
 Project on your own for the ***MegaK v2*** course certification.
@@ -81,3 +82,13 @@ Use script from package.json
     "build": "set REACT_APP_API_URL=/api&& react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject"
+````
+## Screen
+
+![aplication](/src//assets/images/screens/1.JPG "aplication")
+![aplication](/src//assets/images/screens/2.JPG "aplication")
+![aplication](/src//assets/images/screens/3.JPG "aplication")
+![aplication](/src//assets/images/screens/4.JPG "aplication")
+![aplication](/src//assets/images/screens/5.JPG "aplication")
+![aplication](/src//assets/images/screens/6.JPG "aplication")
+
