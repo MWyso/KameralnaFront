@@ -1,11 +1,17 @@
-import React from 'react';
-import {useState} from 'react';
-import {Link} from 'react-router-dom';
-import {NavHashLink} from 'react-router-hash-link';
-import styled from 'styled-components';
+import React, {useState} from "react";
+import {Link} from "react-router-dom";
+import styled from "styled-components";
 import logo from '../../assets/images/logo3.png';
+import {Outlet} from "@styled-icons/bootstrap";
+import {NavHashLink} from "react-router-hash-link";
+import {apiUrl} from "../../config/api";
 
-export const Header = () => {
+type Id = {
+    id: string;
+}
+
+
+export const AdminHeader = (id: Id) => {
     const [navbar, setNavbar] = useState(false);
 
     const changeBackground = () => {
@@ -18,40 +24,49 @@ export const Header = () => {
 
     window.addEventListener('scroll', changeBackground);
 
+    const [loading, setLoading] = useState<boolean>(false);
+    const logOut = async () => {
+        setLoading(true);
+        try {
+            await fetch(`${apiUrl}/login/${id}`);
+        } catch (error) {
+            console.log(error)
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    if (loading) {
+        return (
+            <p>Wait...</p>
+        )
+
+    }
+
     return (
         <Container isActive={navbar}>
             <div className="wrapper">
-                <NavHashLink smooth to="/#">
-                    <img className="logo" src={logo} alt="logo"/>
-                    <br/>
-                    <Link to={'/login'} style={{ color: 'black' }} className="li">Admin panel</Link>
+            <Link to={`/`}>
+                <img className="logo" src={logo} alt="logo"/>
+            </Link>
+            <ul>
+                <NavHashLink
+                    smooth to="#add-admin" className="li">
+                    Dodaj Administratora
                 </NavHashLink>
-                <ul>
-                    <NavHashLink smooth to="#about-us" className="li">
-                        O nas
-                    </NavHashLink>
-                    <NavHashLink smooth to="/#menu" className="li">
-                        Menu
-                    </NavHashLink>
-                    <NavHashLink smooth to="/#find-us" className="li">
-                        Znajdziesz nas
-                    </NavHashLink>
-                    <NavHashLink smooth to="/#contact" className="li">
-                        Kontakt
-                    </NavHashLink>
-                </ul>
+                <NavHashLink
+                    smooth to="#edit-menu" className="li">
+                    Edytuj Menu
+                </NavHashLink>
+            </ul>
+            <div className="path">
+                <Link to="/login" onClick={logOut} style={{ color: 'black' }} className="li">Wyloguj</Link>
+            </div>
 
-                <div>
-                    <Link to={'/basket'} style={{ fontSize: '2em', color: '#F8B400'}}>
-                        <i className="bx bxs-cart-alt"></i>
-                    </Link>
-                </div>
             </div>
         </Container>
     );
 };
-
-
 
 const Container = styled.section<{ isActive: boolean }>`
   position: fixed;
@@ -59,12 +74,12 @@ const Container = styled.section<{ isActive: boolean }>`
   padding: 1rem 0;
   width: 100%;
   background-color: ${(props) =>
-          props.isActive ? props.theme.colors.eden : ''};
+          props.isActive ? props.theme.colors.cream : ''};
   display: flex;
   justify-content: center;
   text-decoration: none;
   font-family: 'Amatic SC', cursive;
-  
+
 
   .wrapper {
     width: 80%;
