@@ -19,8 +19,14 @@ export const Main = () => {
 };
 
 const Wrapper = styled.div`
-    width: 100%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+  max-width: 80rem;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 `;
+
+
+
+

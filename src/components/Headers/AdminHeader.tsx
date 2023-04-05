@@ -14,15 +14,9 @@ type Id = {
 export const AdminHeader = (id: Id) => {
     const [navbar, setNavbar] = useState(false);
 
-    const changeBackground = () => {
-        if (window.scrollY > 0) {
-            setNavbar(true);
-        } else {
-            setNavbar(false);
-        }
-    };
-
-    window.addEventListener('scroll', changeBackground);
+    window.addEventListener("scroll", () => {
+        setNavbar(window.scrollY > 0);
+    });
 
     const [loading, setLoading] = useState<boolean>(false);
     const logOut = async () => {
@@ -71,7 +65,7 @@ export const AdminHeader = (id: Id) => {
 const Container = styled.section<{ isActive: boolean }>`
   position: fixed;
   z-index: 10;
-  padding: 1rem 0;
+  padding: 2rem 0;
   width: 100%;
   background-color: ${(props) =>
           props.isActive ? props.theme.colors.cream : ''};
@@ -91,6 +85,8 @@ const Container = styled.section<{ isActive: boolean }>`
       height: 6rem;
       cursor: pointer;
     }
+    
+    
 
     ul {
       display: flex;
@@ -125,5 +121,38 @@ const Container = styled.section<{ isActive: boolean }>`
         cursor: pointer;
       }
     }
+
+    @media only screen and (min-width: 2000px) {
+      .wrapper {
+        width: 60%;
+      }
+    }
+
+    @media only screen and (max-width: 1250px) {
+      .wrapper {
+        width: 90%;
+      }
+    }
+
+    @media only screen and (max-width: 850px) {
+      padding: 0.5rem 0;
+
+      .wrapper {
+        .logo {
+          height: 3rem;
+        }
+      }
+    }
+
+    @media only screen and (max-width: 600px) {
+      font-size: ${(props) => props.theme.fontSize.sm};
+
+      .wrapper {
+        ul {
+          display: none;
+        }
+      }
+    }
   }
 `;
+

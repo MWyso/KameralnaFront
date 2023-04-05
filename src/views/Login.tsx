@@ -113,11 +113,47 @@ const Container = styled.div`
       font-size: ${(props) => props.theme.fontSize.lg};
       margin-bottom: 2rem;
     }
+    
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-    form {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+.input-box {
+        position: relative;
+        margin-bottom: 20px;
+
+        input {
+            width: 100%;
+            font-size: ${(props) => props.theme.fontSize.base};
+            padding: 10px 0;
+            border: none;
+            border-bottom: 2px solid ${(props) => props.theme.colors.eden};
+            background-color: transparent;
+            color: ${(props) => props.theme.colors.eden};
+            margin-bottom: 5px;
+            outline: none;
+            transition: all 0.3s ease;
+
+        &:focus {
+                border-bottom: 2px solid ${(props) => props.theme.colors.blue};
+            }
+
+        &:valid + label {
+                top: -20px;
+                left: 0;
+                font-size: ${(props) => props.theme.fontSize.sm};
+                color: ${(props) => props.theme.colors.blue};
+            }
+        }
+
+        label {
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-size: ${(props) => props.theme.fontSize.base};
+            color: ${(props) => props.theme.colors.eden};
+            transition: all 0.3s ease;
+        }
     }
-  }
 `;

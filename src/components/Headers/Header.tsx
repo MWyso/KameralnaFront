@@ -1,114 +1,140 @@
-import React from 'react';
-import {useState} from 'react';
-import {Link} from 'react-router-dom';
-import {NavHashLink} from 'react-router-hash-link';
-import styled from 'styled-components';
-import logo from '../../assets/images/logo3.png';
+import React, { useState } from "react";
+import { NavHashLink } from "react-router-hash-link";
+import styled from "styled-components";
+import logo from "../../assets/images/logo3.png";
+import { useMediaQuery } from "react-responsive";
 
 export const Header = () => {
     const [navbar, setNavbar] = useState(false);
+    const isMobile = useMediaQuery({ maxWidth: 768 });
 
-    const changeBackground = () => {
-        if (window.scrollY > 0) {
-            setNavbar(true);
-        } else {
-            setNavbar(false);
-        }
-    };
-
-    window.addEventListener('scroll', changeBackground);
+    window.addEventListener("scroll", () => {
+        setNavbar(window.scrollY > 0);
+    });
 
     return (
-        <Container isActive={navbar}>
-            <div className="wrapper">
-                <NavHashLink smooth to="/#">
-                    <img className="logo" src={logo} alt="logo"/>
-                    <br/>
-                    <Link to={'/login'} style={{ color: 'black' }} className="li">Admin panel</Link>
-                </NavHashLink>
-                <ul>
-                    <NavHashLink smooth to="#about-us" className="li">
-                        O nas
+        <Container isActive={navbar} isMobile={isMobile}>
+            <Wrapper>
+                <LogoWrapper>
+                    <NavHashLink smooth to="#about-us">
+                        <Logo src={logo} alt="logo" />
                     </NavHashLink>
-                    <NavHashLink smooth to="/#menu" className="li">
-                        Menu
-                    </NavHashLink>
-                    <NavHashLink smooth to="/#find-us" className="li">
-                        Znajdziesz nas
-                    </NavHashLink>
-                    <NavHashLink smooth to="/#contact" className="li">
-                        Kontakt
-                    </NavHashLink>
-                </ul>
-
-                <div>
-                    <Link to={'/basket'} style={{ fontSize: '2em', color: '#F8B400'}}>
-                        <i className="bx bxs-cart-alt"></i>
-                    </Link>
-                </div>
-            </div>
+                </LogoWrapper>
+                {!isMobile && (
+                    <MenuList>
+                        <MenuItem>
+                            <NavHashLink smooth to="#about-us">
+                                O nas
+                            </NavHashLink>
+                        </MenuItem>
+                        <MenuItem>
+                            <NavHashLink smooth to="/#menu">
+                                Menu
+                            </NavHashLink>
+                        </MenuItem>
+                        <MenuItem>
+                            <NavHashLink smooth to="/#find-us">
+                                Znajdziesz nas
+                            </NavHashLink>
+                        </MenuItem>
+                        <MenuItem>
+                            <NavHashLink smooth to="/#contact">
+                                Kontakt
+                            </NavHashLink>
+                        </MenuItem>
+                    </MenuList>
+                )}
+            </Wrapper>
         </Container>
     );
 };
 
-
-
-const Container = styled.section<{ isActive: boolean }>`
+const Container = styled.section<{ isActive: boolean, isMobile: boolean }>`
   position: fixed;
   z-index: 10;
   padding: 1rem 0;
-  width: 100%;
   background-color: ${(props) =>
-          props.isActive ? props.theme.colors.eden : ''};
+          props.isActive ? props.theme.colors.eden : ""};
   display: flex;
   justify-content: center;
   text-decoration: none;
+  font-family: "Amatic SC", cursive;
+
+  ${(props) =>
+          props.isMobile &&
+          `
+        height: 7vh;
+    `}
+
+  ${(props) =>
+          !props.isMobile &&
+          `
+        max-height: 15vh;
+        width: 100%;
+    `}
+`;
+
+const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 80rem;
+  margin: 0 auto;
+  height: 6rem;
+`;
+
+const LogoWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+`;
+
+const Logo = styled.img`
+  height: 5rem;
+  margin-right: 2rem;
+  cursor: pointer;
+`;
+
+
+const MenuList = styled.ul`
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
   font-family: 'Amatic SC', cursive;
-  
+`;
 
-  .wrapper {
-    width: 80%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+const MenuItem = styled.li`
+  margin: 0 2rem;
 
-    .logo {
-      height: 6rem;
-      cursor: pointer;
+  a {
+    color: ${({ theme }) => theme.colors.yellow};
+    cursor: pointer;
+    font-weight: 500;
+    position: relative;
+    text-decoration: none;
+    font-size: 1.5rem;
+
+    &:hover {
+      color: ${({ theme }) => theme.colors.gray};
     }
 
-    ul {
-      display: flex;
-      text-decoration: none;
+    &::after {
+      content: " | ";
+      margin-left: 5px;
+      margin-right: 2px;
+    }
 
-      .li {
-        color: ${(props) => props.theme.colors.yellow};
-        cursor: pointer;
-        font-weight: 500;
-        position: relative;
-        text-decoration: none;
-        font-size: 1.5rem;
-
-        &:hover {
-          //text-decoration: underline;
-          color: ${(props) => props.theme.colors.gray};
-        }
-      }
-
-      .li:not(:last-child)::after {
-        content: " | ";
-        margin-left: 5px;
-        margin-right: 2px;
-      }
-
-      .li:not(:last-child) {
-        margin-right: 1rem;
-      }
-
-      .top {
-        z-index: 1;
-        cursor: pointer;
+    &:last-child {
+      &::after {
+        content: "";
       }
     }
   }
 `;
+
+
+
+
+
