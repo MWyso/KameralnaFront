@@ -93,9 +93,9 @@ export const MenuTable = ({ menuTable }: Props) => {
                 <tbody>
                 {menuTable.map((item) => (
                     <tr key={item.id}>
-                        <td>{item.name}</td>
+                        <td><b>{item.name}</b></td>
                         <td>{item.description}</td>
-                        <td>{item.price} zł</td>
+                        <td><b>{item.price.toFixed(2)}zł</b></td>
                     </tr>
                 ))}
                 </tbody>

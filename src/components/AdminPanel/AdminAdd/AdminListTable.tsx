@@ -31,16 +31,47 @@ export const AdminListTable = (props: Props) => (
     </ThemeProvider>
 );
 
+// const StyledTable = styled.table`
+//   border-collapse: collapse;
+//   width: 100%;
+// `;
+//
+// const StyledTh = styled.th`
+//   background-color: ${({ theme }) => theme.colors.eden};
+//   border: 2px solid ${({ theme }) => theme.colors.yellow};
+//   color: ${({ theme }) => theme.colors.cream};
+//   font-size: ${({ theme }) => theme.fontSize.lg};
+//   padding: 1rem;
+//   text-align: center;
+// `;
+
 const StyledTable = styled.table`
   border-collapse: collapse;
   width: 100%;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: ${({ theme }) => theme.fontSize.base};
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: ${({ theme }) => theme.fontSize.lg};
+  }
 `;
 
 const StyledTh = styled.th`
   background-color: ${({ theme }) => theme.colors.eden};
   border: 2px solid ${({ theme }) => theme.colors.yellow};
   color: ${({ theme }) => theme.colors.cream};
-  font-size: ${({ theme }) => theme.fontSize.lg};
-  padding: 1rem;
+  font-size: ${({ theme }) => theme.fontSize.sm};
+  padding: 0.5rem;
   text-align: center;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: ${({ theme }) => theme.fontSize.base};
+    padding: 1rem;
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: ${({ theme }) => theme.fontSize.lg};
+  }
 `;

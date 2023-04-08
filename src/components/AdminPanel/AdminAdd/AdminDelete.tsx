@@ -37,7 +37,7 @@ export const AdminDelete = (props: Props) => {
             <StyledTd>{props.user.name}</StyledTd>
             <StyledTd>{props.user.email}</StyledTd>
             <StyledTd>
-                <a href="#"onClick={deleteItem}><i className="bx bx-x" /></a>
+                <a href="#"onClick={deleteItem} title="Usuń"><i className="bx bx-x" /></a>
             </StyledTd>
         </tr>
     );
