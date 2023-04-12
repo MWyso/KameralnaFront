@@ -91,4 +91,7 @@ Use script from package.json
 ![aplication](/src//assets/images/screens/4.JPG "aplication")
 ![aplication](/src//assets/images/screens/5.JPG "aplication")
 ![aplication](/src//assets/images/screens/6.JPG "aplication")
+![aplication](/src//assets/images/screens/7.JPG "aplication")
+![aplication](/src//assets/images/screens/8.JPG "aplication")
+![aplication](/src//assets/images/screens/9.JPG "aplication")
 
