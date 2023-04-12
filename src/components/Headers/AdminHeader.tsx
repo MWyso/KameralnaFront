@@ -5,6 +5,7 @@ import logo from '../../assets/images/logo3.png';
 import {Outlet} from "@styled-icons/bootstrap";
 import {NavHashLink} from "react-router-hash-link";
 import {apiUrl} from "../../config/api";
+import {useMediaQuery} from "react-responsive";
 
 type Id = {
     id: string;
@@ -13,16 +14,11 @@ type Id = {
 
 export const AdminHeader = (id: Id) => {
     const [navbar, setNavbar] = useState(false);
+    const isMobile = useMediaQuery({maxWidth: 768});
 
-    const changeBackground = () => {
-        if (window.scrollY > 0) {
-            setNavbar(true);
-        } else {
-            setNavbar(false);
-        }
-    };
-
-    window.addEventListener('scroll', changeBackground);
+    window.addEventListener("scroll", () => {
+        setNavbar(window.scrollY > 0);
+    });
 
     const [loading, setLoading] = useState<boolean>(false);
     const logOut = async () => {
@@ -44,86 +40,133 @@ export const AdminHeader = (id: Id) => {
     }
 
     return (
-        <Container isActive={navbar}>
-            <div className="wrapper">
-            <Link to={`/`}>
-                <img className="logo" src={logo} alt="logo"/>
-            </Link>
-            <ul>
-                <NavHashLink
-                    smooth to="#add-admin" className="li">
-                    Dodaj Administratora
-                </NavHashLink>
-                <NavHashLink
-                    smooth to="#edit-menu" className="li">
-                    Edytuj Menu
-                </NavHashLink>
-            </ul>
-            <div className="path">
-                <Link to="/login" onClick={logOut} style={{ color: 'black' }} className="li">Wyloguj</Link>
-            </div>
+        <Container isActive={navbar} isMobile={isMobile}>
+            <Wrapper>
+                <LogoWrapper>
+                    <NavHashLink smooth to="#add-admin">
+                        <Logo src={logo} alt="logo"/>
+                    </NavHashLink>
+                </LogoWrapper>
+                {!isMobile && (
+                    <MenuList>
+                        <MenuItem>
+                            <NavHashLink smooth to="#add-admin" className="li">
+                                Dodaj Administratora
+                            </NavHashLink>
+                        </MenuItem>
+                        <MenuItem>
+                            <NavHashLink smooth to="#edit-menu" className="li">
+                                Edytuj Menu
+                            </NavHashLink>
+                        </MenuItem>
+                    </MenuList>
+                )}
+                <Link to="/login">
+                    <Button>Wyloguj</Button>
+                </Link>
 
-            </div>
+            </Wrapper>
         </Container>
     );
 };
 
-const Container = styled.section<{ isActive: boolean }>`
+const Container = styled.section<{ isActive: boolean, isMobile: boolean }>`
   position: fixed;
   z-index: 10;
   padding: 1rem 0;
-  width: 100%;
   background-color: ${(props) =>
-          props.isActive ? props.theme.colors.cream : ''};
+          props.isActive ? props.theme.colors.eden : ""};
   display: flex;
   justify-content: center;
   text-decoration: none;
+  font-family: "Amatic SC", cursive;
+
+  ${(props) =>
+          props.isMobile &&
+          `
+        height: 7vh;
+    `}
+
+  ${(props) =>
+          !props.isMobile &&
+          `
+        max-height: 15vh;
+        width: 100%;
+    `}
+`;
+
+const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 80rem;
+  margin-bot: 5px;
+  height: 5rem;
+`;
+
+const LogoWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+`;
+
+const Logo = styled.img`
+  height: 5rem;
+  margin-right: 2rem;
+  cursor: pointer;
+`;
+
+
+const MenuList = styled.ul`
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
   font-family: 'Amatic SC', cursive;
+`;
 
+const MenuItem = styled.li`
+  margin: 0 2rem;
 
-  .wrapper {
-    width: 80%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  a {
+    color: ${({theme}) => theme.colors.yellow};
+    cursor: pointer;
+    font-weight: 500;
+    position: relative;
+    text-decoration: none;
+    font-size: 1.5rem;
 
-    .logo {
-      height: 6rem;
-      cursor: pointer;
+    &:hover {
+      color: ${({theme}) => theme.colors.gray};
     }
 
-    ul {
-      display: flex;
-      text-decoration: none;
+    &::after {
+      content: " | ";
+      margin-left: 5px;
+      margin-right: 2px;
+    }
 
-      .li {
-        color: ${(props) => props.theme.colors.yellow};
-        cursor: pointer;
-        font-weight: 500;
-        position: relative;
-        text-decoration: none;
-        font-size: 1.5rem;
-
-        &:hover {
-          //text-decoration: underline;
-          color: ${(props) => props.theme.colors.gray};
-        }
-      }
-
-      .li:not(:last-child)::after {
-        content: " | ";
-        margin-left: 5px;
-        margin-right: 2px;
-      }
-
-      .li:not(:last-child) {
-        margin-right: 1rem;
-      }
-
-      .top {
-        z-index: 1;
-        cursor: pointer;
+    &:last-child {
+      &::after {
+        content: "";
       }
     }
   }
 `;
+
+const Button = styled.button`
+  padding: 0.8rem 2rem;
+  background-color: ${(props) => props.theme.colors.yellow};
+  border-radius: 50px;
+  border: none;
+  color: white;
+  font-size: ${(props) => props.theme.fontSize.sm};
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: ${(props) => props.theme.colors.eden};
+  }
+`;
+

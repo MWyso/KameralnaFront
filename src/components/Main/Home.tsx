@@ -1,5 +1,4 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import logo from '../../assets/images/kameralna-home.png';
 
@@ -31,15 +30,16 @@ export const Home = () => {
     );
 };
 
+//AI
 
 const Wrapper = styled.section`
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  min-height: 110vh;
   width: 100%;
-  
+
   h2 {
     font-size: ${(props) => props.theme.fontSize.xxl};
     margin-bottom: 1rem;
@@ -47,7 +47,7 @@ const Wrapper = styled.section`
     text-decoration: underline;
     padding-bottom: 2px;
     font-family: 'Amatic SC', cursive;
-    color: ${(props) => props.theme.colors.yellow}
+    color: ${(props) => props.theme.colors.yellow};
   }
 
   &::before {
@@ -105,6 +105,7 @@ const Wrapper = styled.section`
 
     img {
       width: 90%;
+      max-width: 500px;
     }
   }
 
@@ -127,7 +128,7 @@ const Wrapper = styled.section`
     }
   }
 
-  @media only screen and (max-width: 1024px) {
+  @media only screen and (max-width: ${props => props.theme.breakpoints.sm}) {
     .container {
       width: 95%;
       height: auto;
@@ -147,69 +148,66 @@ const Wrapper = styled.section`
       }
     }
   }
+  @media only screen and (min-width: ${props => props.theme.breakpoints.sm}) and (max-width: ${props => props.theme.breakpoints.md}) {
+.container {
+width: 95%;
+height: auto;
+padding: 1rem;
+}
+.info-txt {
+  width: 100%;
+  padding-right: 0;
+}
 
-  @media only screen and (max-height: 768px) {
-    .container {
-      width: 95%;
-      height: auto;
-      padding: 1rem;
-    }
+.info-img {
+  width: 100%;
 
-    .info-txt {
-      width: 100%;
-      padding-right: 0;
-    }
-
-    .info-img {
-      width: 100%;
-
-      img {
-        width: 60%;
-      }
-    }
+  img {
+    width: 60%;
   }
-  @media only screen and (max-width: 600px) {
-    .container {
-      width: 90%;
-      height: auto;
-      padding: 0.5rem;
-    }
+}
+@media only screen and (min-width: ${props => props.theme.breakpoints.md}) and (max-width: ${props => props.theme.breakpoints.lg}) {
+.container {
+width: 90%;
+height: auto;
+padding: 0.5rem;
+}
+.info-txt {
+  width: 60%;
+  padding-right: 2rem;
+}
 
-    .info-txt {
-      width: 100%;
-      padding-right: 0;
-      text-align: center;
-    }
+.info-img {
+  width: 40%;
 
-    .info-img {
-      width: 100%;
-
-      img {
-        width: 50%;
-      }
-    }
+  img {
+    width: 90%;
+    max-width: 500px;
   }
-  @media only screen and (max-width: 400px) {
-    .container {
-      width: 85%;
-      height: auto;
-      padding: 0.5rem;
-    }
+}
+@media only screen and (min-width: ${props => props.theme.breakpoints.lg}) {
+.container {
+width: 90%;
+height: auto;
+padding: 2rem;
+}
+.info-txt {
+  width: 50%;
+  padding-right: 2rem;
+}
 
-    .info-txt {
-      width: 100%;
-      padding-right: 0;
-      text-align: center;
-      font-size: 1rem;
-    }
+.info-img {
+  width: 50%;
 
-    .info-img {
-      width: 100%;
-
-      img {
-        width: 40%;
-      }
-    }
+  img {
+    width: 90%;
+    max-width: 500px;
   }
 }
 `;
+
+
+
+
+
+

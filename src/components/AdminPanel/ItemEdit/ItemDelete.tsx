@@ -33,23 +33,51 @@ export const ItemDelete = (props: Props) => {
 
     return (
 
-            <tr>
+        <StyledRow>
                 <StyledTd>{props.item.name}</StyledTd>
                 <StyledTd>{props.item.description}</StyledTd>
-                <StyledTd>{props.item.price.toFixed(2)} zł</StyledTd>
+                <StyledTd>{props.item.price.toFixed(2)}zł</StyledTd>
             <StyledTd>
-                <a href="#"onClick={deleteItem}><i className="bx bx-x" /></a>
+                <a href="#"onClick={deleteItem} title="Usuń"><i className="bx bx-x" /></a>
             </StyledTd>
-        </tr>
+        </StyledRow>
     );
 };
 
 
+const StyledRow = styled.tr`
+@media only screen and (max-width: ${(props) => props.theme.breakpoints.sm}) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem;
+        border: 1px solid ${({ theme }) => theme.colors.yellow};
+border-radius: 5px;
+padding: 1rem;
+}
+
+  @media only screen and (max-width: ${(props) => props.theme.breakpoints.sm}) {
+    margin-bottom: 1rem;
+    text-align: center;
+    width: 100%;
+
+    .bx-x {
+      position: center;
+      top: 1rem;
+      left: 1rem;
+      color: ${(props) => props.theme.colors.red};
+      font-size: ${(props) => props.theme.fontSize.xl2};
+    }
+
+
+`;
+
 const StyledTd = styled.td`
-  border: 1px solid ${({ theme }) => theme.colors.yellow};
-  font-size: ${({ theme }) => theme.fontSize.sm};
-  background-color: white;
-  padding: 1rem;
+border: 1px solid ${({ theme }) => theme.colors.yellow};
+font-size: ${({ theme }) => theme.fontSize.sm};
+background-color: white;
+padding: 1rem;
 
   .bx-x {
     position: center;
@@ -59,3 +87,4 @@ const StyledTd = styled.td`
     font-size: ${(props) => props.theme.fontSize.xl2};
   }
 `;
+
