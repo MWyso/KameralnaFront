@@ -23,8 +23,17 @@
 ## General info
 Project on your own for the ***MegaK v2*** course certification.
 <hr>
-<b>This project is the beginning of the road of my new career. It is meant to be a proof and history of my learning and progress in learning JS programming. I want to rebuild it, learn from it and add new technologies/solutions that I will learn during this time.
-The first step I would like to take is to make it in nest.js technology.</b>
+<b>This project is a summary of learning from the MegaK course. I used a lot of the things we did in the course.
+I used materials from MegaK, Chat-GPT4 and other repositories available on the web to create this repository. 
+The project is developmental and is a history and documentation of learning. <br>
+
+I Currently working on:<br>
+1. Create a proper, secure login and registration system<br>
+
+In the near future, I will take care of:<br>
+
+1. Redevelop the entire application into Nest.js<br>
+2. Build an online ordering system (shopping cart)</b>
 <hr>
 Project assumptions:
 <br>
